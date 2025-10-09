@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Momentum2</string>
+    <string name="title_activity_login">Momentum</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_password_es">Contraseña</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_es">Inicia sesión o regístrate</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in_short_es">Inicia sesión</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be more to 5 characters</string>
+    <string name="invalid_password_es">La contraseña debe contener mas de 5 caracteres </string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="login_failed_es">"Sesión fallida"</string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>

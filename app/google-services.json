@@ -1,0 +1,144 @@
+{
+  "project_info": {
+    "project_number": "976327387743",
+    "firebase_url": "https://luthje-1332.firebaseio.com",
+    "project_id": "luthje-1332",
+    "storage_bucket": "luthje-1332.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976327387743:android:fa4d259d6a0dab0ce449ea",
+        "android_client_info": {
+          "package_name": "com.example.adoptar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1pq2HYqGRNRRbv_JPRo7X3VvUfXBb76A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976327387743:android:511367847262ab01e449ea",
+        "android_client_info": {
+          "package_name": "com.example.login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1pq2HYqGRNRRbv_JPRo7X3VvUfXBb76A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976327387743:android:e6a00cb436dfe46ce449ea",
+        "android_client_info": {
+          "package_name": "com.example.m1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1pq2HYqGRNRRbv_JPRo7X3VvUfXBb76A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976327387743:android:b4dce69ef0ca2f3ce449ea",
+        "android_client_info": {
+          "package_name": "com.example.momentic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1pq2HYqGRNRRbv_JPRo7X3VvUfXBb76A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976327387743:android:47cd1233df96f83fe449ea",
+        "android_client_info": {
+          "package_name": "com.example.momentic3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1pq2HYqGRNRRbv_JPRo7X3VvUfXBb76A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976327387743:android:570bbf859c9bcba5e449ea",
+        "android_client_info": {
+          "package_name": "com.example.momentum"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1pq2HYqGRNRRbv_JPRo7X3VvUfXBb76A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976327387743:android:669363f15c2886d0e449ea",
+        "android_client_info": {
+          "package_name": "com.example.momentum2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1pq2HYqGRNRRbv_JPRo7X3VvUfXBb76A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
