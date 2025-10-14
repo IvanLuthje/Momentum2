@@ -24,15 +24,17 @@
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.Momentum2">
-
-        </activity>
+            android:resizeableActivity="true"
+            android:configChanges="uiMode"
+            android:theme="@style/Theme.Momentum2.NoActionBar"
+            tools:targetApi="24" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
