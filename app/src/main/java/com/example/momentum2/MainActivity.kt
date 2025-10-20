@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -18,6 +19,8 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.appcompat.app.AppCompatActivity
 import com.example.momentum2.databinding.ActivityMainBinding
 import com.example.momentum2.ui.login.LoginActivity
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
@@ -45,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         binding.navView?.let {
             appBarConfiguration = AppBarConfiguration(
                 setOf(
-                    R.id.nav_transform, R.id.nav_reflow, R.id.nav_slideshow, R.id.nav_settings
+                    R.id.nav_transform, R.id.nav_reflow, R.id.nav_slideshow, R.id.nav_settings, R.id.logout
                 ),
                 binding.drawerLayout
             )
@@ -66,12 +69,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val result = super.onCreateOptionsMenu(menu)
-        // Using findViewById because NavigationView exists in different layout files
-        // between w600dp and w1240dp
+
         val navView: NavigationView? = findViewById(R.id.nav_view)
         if (navView == null) {
-            // The navigation drawer already has the items including the items in the overflow menu
-            // We only inflate the overflow menu if the navigation drawer isn't visible
             menuInflater.inflate(R.menu.overflow, menu)
         }
         return result
@@ -85,8 +85,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.logout -> {
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
+                Firebase.auth.signOut()
+                val intent_login = Intent(this,  LoginActivity::class.java)
+                startActivity(intent_login)
+                finish()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -102,7 +104,7 @@ class MainActivity : AppCompatActivity() {
         try {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
         } catch (e: ActivityNotFoundException) {
-            // display error state to the user
+            Toast.makeText(applicationContext, R.string.camera_error , Toast.LENGTH_SHORT).show()
         }
     }
 
