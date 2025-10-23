@@ -26,6 +26,7 @@
     <string name="camera_error">Error en la camara</string>
     <string name="menu_transform">Momentos</string>
     <string name="menu_reflow">Detalles</string>
+    <string name="descripcion">Descripción (máximo 140 caracteres)</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_settings">Configuraciones</string>
     <string name="logout">Cerrar sesión</string>
@@ -41,4 +42,5 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_guardar_momento">GuardarMomento</string>
 </resources>

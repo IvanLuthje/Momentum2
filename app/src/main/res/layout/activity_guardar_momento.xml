@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imageViewMomento"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:scaleType="centerCrop"
+        android:background="#EEEEEE" />
+
+    <EditText
+        android:id="@+id/editTextDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/descripcion"
+        android:maxLength="140"
+        android:layout_marginTop="12dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_menu_save" />
+</LinearLayout>

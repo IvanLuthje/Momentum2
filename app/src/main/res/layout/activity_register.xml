@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@drawable/login"
     android:padding="24dp"
     android:gravity="center">
 
     <EditText
         android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/roundedcorner"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre"
-        android:inputType="textEmailAddress" />
+        app:layout_constraintVertical_bias="0.07" />
 
     <EditText
         android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/roundedcorner"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintVertical_bias="0.47" />
 
     <EditText
         android:id="@+id/confirmarPassword"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/roundedcorner"
         android:hint="Confirmar contraseña"
         android:inputType="textPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintVertical_bias="0.087" />
 
     <Button
         android:id="@+id/botonRegistrar"
+        android:background="@drawable/roundedcorner"
         android:text="@string/action_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

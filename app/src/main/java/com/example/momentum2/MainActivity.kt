@@ -1,13 +1,16 @@
 package com.example.momentum2
 
+import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -21,6 +24,7 @@ import com.example.momentum2.databinding.ActivityMainBinding
 import com.example.momentum2.ui.login.LoginActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
@@ -99,11 +103,28 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    private val camaraLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK && result.data != null) {
+            val imageBitmap = result.data!!.extras!!.get("data") as Bitmap
+
+            // Convertir a byteArray para pasarlo a la siguiente actividad
+            val stream = ByteArrayOutputStream()
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 90, stream)
+            val bytes = stream.toByteArray()
+
+            // Enviar la imagen a GuardarMomentoActivity
+            val intent = Intent(this, GuardarMomentoActivity::class.java)
+            intent.putExtra("foto", bytes)
+            startActivity(intent)
+        }
+    }
+
     private fun capturarIntent() {
         val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         try {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-        } catch (e: ActivityNotFoundException) {
+          camaraLauncher.launch(takePictureIntent)
+        }
+        catch (e: ActivityNotFoundException) {
             Toast.makeText(applicationContext, R.string.camera_error , Toast.LENGTH_SHORT).show()
         }
     }

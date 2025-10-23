@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
+    android:background="@drawable/login"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -14,11 +16,13 @@
     <EditText
         android:id="@+id/username"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="284dp"
         android:autofillHints="@string/prompt_email"
+        android:background="@drawable/roundedcorner"
         android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
+        android:paddingLeft="10dp"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -28,13 +32,15 @@
     <EditText
         android:id="@+id/password"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="44dp"
         android:autofillHints="@string/prompt_password"
+        android:background="@drawable/roundedcorner"
         android:hint="@string/prompt_password"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
+        android:paddingLeft="10dp"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -48,6 +54,7 @@
         android:layout_gravity="start"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="64dp"
+        android:background="@drawable/roundedcorner"
         android:enabled="true"
         android:text="@string/action_sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,6 +71,7 @@
         android:layout_gravity="start"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="64dp"
+        android:background="@drawable/roundedcorner"
         android:enabled="true"
         android:text="@string/action_register"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -98,20 +106,20 @@
         app:layout_constraintVertical_bias="0.318"
         app:srcCompat="@drawable/logo1" />
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/btnGoogleSignIn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginTop="40dp"
-        android:enabled="false"
-        android:text="@string/action_sign_in"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.575" />
+    <!--    <com.google.android.gms.common.SignInButton-->
+    <!--        android:id="@+id/btnGoogleSignIn"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="start"-->
+    <!--        android:layout_marginTop="40dp"-->
+    <!--        android:enabled="false"-->
+    <!--        android:text="@string/action_sign_in"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/password"-->
+    <!--        app:layout_constraintVertical_bias="0.575" />-->
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

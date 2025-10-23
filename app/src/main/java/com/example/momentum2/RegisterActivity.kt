@@ -24,11 +24,10 @@ class RegisterActivity : AppCompatActivity() {
             val username = binding.username.text.toString().trim()
             val password = binding.password.text.toString().trim()
             val confirmPassword = binding.confirmarPassword.text.toString().trim()
-            val user = binding.user.text.toString().trim()
 
 
 
-            if (user.isEmpty() || username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(this, "Por favor completar los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
