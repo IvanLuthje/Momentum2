@@ -10,12 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:scaleType="centerCrop"
-        android:background="#EEEEEE" />
+        android:background="@drawable/roundedcorner"
+        />
 
     <EditText
         android:id="@+id/editTextDescripcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/roundedcorner"
         android:hint="@string/descripcion"
         android:maxLength="140"
         android:layout_marginTop="12dp"/>
@@ -24,8 +26,8 @@
         android:id="@+id/buttonGuardar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:layout_marginTop="188dp"
         app:srcCompat="@android:drawable/ic_menu_save" />
 </LinearLayout>

@@ -28,6 +28,7 @@ firebaseDatabaseKtx = "22.0.1"
 firebaseStorageKtx = "22.0.1"
 firebaseFirestore = "26.0.2"
 firebaseDatabase = "22.0.1"
+playServicesCastTv = "21.1.1"
 
 
 [libraries]
@@ -65,6 +66,7 @@ firebase-database-ktx = { group = "com.google.firebase", name = "firebase-databa
 firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version = "21.0.2" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+play-services-cast-tv = { group = "com.google.android.gms", name = "play-services-cast-tv", version.ref = "playServicesCastTv" }
 
 
 [plugins]

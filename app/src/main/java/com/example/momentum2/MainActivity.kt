@@ -22,6 +22,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.appcompat.app.AppCompatActivity
 import com.example.momentum2.databinding.ActivityMainBinding
 import com.example.momentum2.ui.login.LoginActivity
+import com.example.momentum2.GuardarMomentoActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import java.io.ByteArrayOutputStream
@@ -112,7 +113,6 @@ class MainActivity : AppCompatActivity() {
             imageBitmap.compress(Bitmap.CompressFormat.JPEG, 90, stream)
             val bytes = stream.toByteArray()
 
-            // Enviar la imagen a GuardarMomentoActivity
             val intent = Intent(this, GuardarMomentoActivity::class.java)
             intent.putExtra("foto", bytes)
             startActivity(intent)
@@ -130,3 +130,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+

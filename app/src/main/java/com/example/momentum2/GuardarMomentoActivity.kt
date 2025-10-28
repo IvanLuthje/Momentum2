@@ -1,6 +1,8 @@
 package com.example.momentum2
 
 import android.Manifest
+import android.R.attr.bitmap
+import android.content.ContentValues
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
@@ -9,18 +11,20 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.cloudinary.android.MediaManager
 import com.example.momentum2.databinding.ActivityGuardarMomentoBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+
+
 
 class GuardarMomentoActivity : AppCompatActivity(), LocationListener {
 
@@ -36,12 +40,22 @@ class GuardarMomentoActivity : AppCompatActivity(), LocationListener {
         binding = ActivityGuardarMomentoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val config = HashMap<String, String>()
+        config["cloud_name"] = "dbcbevbty"
+        config["api_key"] = "687437519863617"
+        config["api_secret"] = "IvNX9eP8pSV22c4LS4ZNn3-vZQM"
+
+        MediaManager.init(this, config)
+
+
+
+        fotoUri = guardarImagenEnUri(bitmap)
+
         // --- Recibir la imagen desde MainActivity ---
         val bytes = intent.getByteArrayExtra("foto")
         if (bytes != null) {
             val bitmap = BitmapFactory.decodeStream(ByteArrayInputStream(bytes))
             binding.imageViewMomento.setImageBitmap(bitmap)
-            fotoUri = guardarImagenEnUri(bitmap)
         }
 
         // --- Configurar LocationManager ---
@@ -49,15 +63,26 @@ class GuardarMomentoActivity : AppCompatActivity(), LocationListener {
         obtenerUbicacion()
 
         binding.buttonGuardar.setOnClickListener {
-            guardarMomentoEnFirestore()
+            guardarMomento()
         }
     }
 
-    private fun guardarImagenEnUri(bitmap: android.graphics.Bitmap): Uri {
-        val bytes = ByteArrayOutputStream()
-        bitmap.compress(android.graphics.Bitmap.CompressFormat.JPEG, 90, bytes)
-        val path = MediaStore.Images.Media.insertImage(contentResolver, bitmap, "momento", null)
-        return Uri.parse(path)
+    private fun guardarImagenEnUri(bitmap: Int): Uri? {
+        return try {
+            val contentValues = ContentValues().apply {
+                put(MediaStore.Images.Media.DISPLAY_NAME, "momento_${System.currentTimeMillis()}.jpg")
+                put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+                put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + "/momentos")
+            }
+
+            val resolver = contentResolver
+            val uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+            uri
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
     }
 
     private fun obtenerUbicacion() {
@@ -90,7 +115,7 @@ class GuardarMomentoActivity : AppCompatActivity(), LocationListener {
     override fun onProviderEnabled(provider: String) {}
     override fun onProviderDisabled(provider: String) {}
 
-    private fun guardarMomentoEnFirestore() {
+    private fun guardarMomento() {
         val descripcion = binding.editTextDescripcion.text.toString().trim()
         if (descripcion.isEmpty() || fotoUri == null) {
             Toast.makeText(this, "Agrega una foto y una descripción", Toast.LENGTH_SHORT).show()
@@ -104,37 +129,57 @@ class GuardarMomentoActivity : AppCompatActivity(), LocationListener {
 
         val fechaActual = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: "anonimo"
-        val momentoId = firestore.collection("momentos").document().id
+        val momentoId = FirebaseFirestore.getInstance().collection("momentos").document().id
 
-        val storageRef = FirebaseStorage.getInstance().reference.child("momentos/$momentoId.jpg")
-        storageRef.putFile(fotoUri!!)
-            .addOnSuccessListener {
-                storageRef.downloadUrl.addOnSuccessListener { uri ->
+        Toast.makeText(this, "Subiendo imagen", Toast.LENGTH_SHORT).show()
+
+        // Configuración Cloudinary
+
+
+        // Subir imagen
+       MediaManager.get().upload(fotoUri)
+            .option("upload_preset", "momento_preset")
+            .option("folder", "momentos")
+            .callback(object : com.cloudinary.android.callback.UploadCallback {
+                override fun onStart(requestId: String?) {}
+
+                override fun onProgress(requestId: String?, bytes: Long, totalBytes: Long) {}
+
+                override fun onSuccess(requestId: String?, resultData: MutableMap<Any?, Any?>?) {
+                    val imageUrl = resultData?.get("secure_url") as? String ?: return
+
                     val momento = Moment(
                         id = momentoId,
                         userId = userId,
-                        fotoUrl = uri.toString(),
+                        fotoUrl = imageUrl,
                         descripcion = descripcion,
                         fecha = fechaActual,
                         latitud = latitud,
                         longitud = longitud
                     )
 
-                    firestore.collection("momentos")
+                    FirebaseFirestore.getInstance().collection("momentos")
                         .document(momentoId)
                         .set(momento)
                         .addOnSuccessListener {
-                            Toast.makeText(this, "Momento guardado correctamente en Firestore", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@GuardarMomentoActivity,
+                                "Momento guardado correctamente",
+                                Toast.LENGTH_LONG
+                            ).show()
                             finish()
                         }
                         .addOnFailureListener {
-                            Toast.makeText(this, "Error al guardar en Firestore", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@GuardarMomentoActivity, "Error al guardar en Firestore", Toast.LENGTH_SHORT).show()
                         }
                 }
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "Error al subir la foto", Toast.LENGTH_SHORT).show()
-            }
+
+                override fun onError(requestId: String?, error: com.cloudinary.android.callback.ErrorInfo?) {
+                    Toast.makeText(this@GuardarMomentoActivity, "Error al subir imagen: ${error?.description}", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onReschedule(requestId: String?, error: com.cloudinary.android.callback.ErrorInfo?) {}
+            })
     }
 
     override fun onDestroy() {
@@ -144,3 +189,13 @@ class GuardarMomentoActivity : AppCompatActivity(), LocationListener {
         }
     }
 }
+
+data class Moment(
+    val id: String = "",
+    val userId: String = "",
+    val fotoUrl: String = "",
+    val descripcion: String = "",
+    val fecha: String,
+    val latitud: Double = 0.0,
+    val longitud: Double = 0.0
+)
