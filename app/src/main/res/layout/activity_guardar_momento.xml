@@ -16,11 +16,16 @@
     <EditText
         android:id="@+id/editTextDescripcion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/roundedcorner"
         android:hint="@string/descripcion"
         android:maxLength="140"
-        android:layout_marginTop="12dp"/>
+        android:textAlignment="center" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonGuardar"
@@ -28,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginBottom="100dp"
         app:srcCompat="@android:drawable/ic_menu_save" />
 </LinearLayout>

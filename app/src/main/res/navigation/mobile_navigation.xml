@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/nav_reflow"
-        android:name="com.example.momentum2.ui.reflow.ReflowFragment"
+        android:name="com.example.momentum2.ui.momentos.ReflowFragment"
         android:label="@string/menu_reflow"
-        tools:layout="@layout/fragment_reflow" />
+        tools:layout="@layout/fragment_momentos" />
 
     <fragment
         android:id="@+id/nav_slideshow"
