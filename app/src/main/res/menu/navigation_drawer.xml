@@ -9,7 +9,7 @@
             android:icon="@drawable/ic_camera_black_24dp"
             android:title="@string/menu_transform" />
         <item
-            android:id="@+id/nav_reflow"
+            android:id="@+id/nav_momentos"
             android:icon="@drawable/ic_gallery_black_24dp"
             android:title="@string/menu_reflow" />
         <item
@@ -23,5 +23,8 @@
         <item
             android:id="@+id/logout"
             android:title="@string/logout" />
+        <item
+            android:id="@+id/nav_momentos"
+            android:title="@string/momentos" />
     </group>
 </menu>

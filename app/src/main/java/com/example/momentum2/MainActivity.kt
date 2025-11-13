@@ -27,7 +27,6 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import java.io.ByteArrayOutputStream
 import java.io.File
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -46,6 +45,8 @@ class MainActivity : AppCompatActivity() {
             capturarIntent()
         }
 
+
+
         val navHostFragment =
             (supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment?)!!
         val navController = navHostFragment.navController
@@ -53,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         binding.navView?.let {
             appBarConfiguration = AppBarConfiguration(
                 setOf(
-                    R.id.nav_transform, R.id.nav_reflow, R.id.nav_settings, R.id.logout
+                    R.id.nav_transform, R.id.nav_momentos, R.id.nav_settings, R.id.logout
                 ),
                 binding.drawerLayout
             )
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         binding.appBarMain.contentMain.bottomNavView?.let {
             appBarConfiguration = AppBarConfiguration(
                 setOf(
-                    R.id.nav_transform, R.id.nav_reflow
+                    R.id.nav_transform, R.id.nav_momentos
                 )
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
@@ -108,7 +109,6 @@ class MainActivity : AppCompatActivity() {
         if (result.resultCode == Activity.RESULT_OK && result.data != null) {
             val imageBitmap = result.data!!.extras!!.get("data") as Bitmap
 
-            // Convertir a byteArray para pasarlo a la siguiente actividad
             val stream = ByteArrayOutputStream()
             imageBitmap.compress(Bitmap.CompressFormat.JPEG, 90, stream)
             val bytes = stream.toByteArray()
@@ -118,6 +118,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 
     private fun capturarIntent() {
         val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)

@@ -8,7 +8,7 @@
             android:id="@+id/nav_transform"
             android:icon="@drawable/ic_camera_black_24dp" />
         <item
-            android:id="@+id/nav_reflow"
+            android:id="@+id/nav_momentos"
             android:icon="@drawable/ic_gallery_black_24dp" />
     </group>
 </menu>

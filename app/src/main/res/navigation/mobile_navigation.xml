@@ -12,16 +12,12 @@
         tools:layout="@layout/fragment_transform" />
 
     <fragment
-        android:id="@+id/nav_reflow"
-        android:name="com.example.momentum2.ui.momentos.ReflowFragment"
-        android:label="@string/menu_reflow"
+        android:id="@+id/nav_momentos"
+        android:name="com.example.momentum2.ui.momentos.MomentosFragment"
+        android:label="Momentos"
         tools:layout="@layout/fragment_momentos" />
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.momentum2.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+
 
     <fragment
         android:id="@+id/nav_settings"

@@ -69,7 +69,7 @@ dependencies {
     implementation("com.google.firebase:firebase-storage:21.0.0")
     implementation("com.google.firebase:firebase-auth:23.1.0")
     implementation("com.cloudinary:cloudinary-android:2.3.1")
-
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     // Also add the dependencies for the Credential Manager libraries and specify their versions
     implementation("androidx.credentials:credentials:1.3.0")
     implementation("androidx.credentials:credentials-play-services-auth:1.3.0")

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.momentum2.MainActivity
+import com.example.momentum2.MainActivity2
 import com.google.firebase.auth.FirebaseAuth
 import com.example.momentum2.databinding.ActivityLoginBinding
 import com.example.momentum2.R
@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
         login = findViewById(R.id.login)
         register = findViewById(R.id.botonRegistrar)
 
-        val intent_login = Intent(this,  MainActivity::class.java)
+        val intent_login = Intent(this,  MainActivity2::class.java)
 
 
         register.setOnClickListener {
@@ -77,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
         super.onStart()
         val user = auth.currentUser
         if (user != null) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, MainActivity2::class.java))
             finish()
         }
     }

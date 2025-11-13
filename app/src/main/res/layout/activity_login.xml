@@ -106,20 +106,7 @@
         app:layout_constraintVertical_bias="0.318"
         app:srcCompat="@drawable/logo1" />
 
-    <!--    <com.google.android.gms.common.SignInButton-->
-    <!--        android:id="@+id/btnGoogleSignIn"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_gravity="start"-->
-    <!--        android:layout_marginTop="40dp"-->
-    <!--        android:enabled="false"-->
-    <!--        android:text="@string/action_sign_in"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.0"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/password"-->
-    <!--        app:layout_constraintVertical_bias="0.575" />-->
+
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
