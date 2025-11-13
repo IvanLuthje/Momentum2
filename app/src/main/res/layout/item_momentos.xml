@@ -29,4 +29,10 @@
         android:textSize="14sp"
         android:textColor="#FFF"
         android:paddingTop="2dp" />
+
+    <Button
+        android:id="@+id/view_momento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/view_momento" />
 </LinearLayout>

@@ -50,4 +50,5 @@
     <string name="tab_text_1">Momentos</string>
     <string name="tab_text_2">Configuraciones</string>
     <string name="title_activity_main3">MainActivity3</string>
+    <string name="view_momento">Ver momento</string>
 </resources>

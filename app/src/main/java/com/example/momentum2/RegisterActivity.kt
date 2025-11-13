@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.momentum2.MainActivity
+import com.example.momentum2.MainActivity2
 import com.example.momentum2.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -41,7 +42,7 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Registración exitosa", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, MainActivity::class.java))
+                        startActivity(Intent(this, MainActivity2::class.java))
                         finish()
                     } else {
                         Toast.makeText(this, "Hay un error de registración o la cuenta de email ya existe", Toast.LENGTH_LONG).show()

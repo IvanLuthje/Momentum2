@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -14,9 +15,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.viewpager.widget.ViewPager
 import com.example.momentum2.databinding.ActivityMain2Binding
+import com.example.momentum2.ui.login.LoginActivity
 import com.example.momentum2.ui.main.SectionsPagerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 import java.io.ByteArrayOutputStream
 
 class MainActivity2 : AppCompatActivity() {
@@ -38,16 +42,16 @@ class MainActivity2 : AppCompatActivity() {
         val fab: FloatingActionButton = binding.fab
 
         fab.setOnClickListener { view ->
-            capturarIntent()
+            cerrarSesion()
         }
 
+
+
     }
 
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
+
+
     private val camaraLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK && result.data != null) {
             val imageBitmap = result.data!!.extras!!.get("data") as Bitmap
@@ -72,4 +76,15 @@ class MainActivity2 : AppCompatActivity() {
             Toast.makeText(applicationContext, R.string.camera_error , Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun cerrarSesion(){
+                    Firebase.auth.signOut()
+                    val intent_login = Intent(this,  LoginActivity::class.java)
+                    startActivity(intent_login)
+                    finish()
+
+    }
+
+
+
 }
