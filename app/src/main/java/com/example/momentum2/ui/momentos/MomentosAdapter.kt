@@ -28,6 +28,7 @@ class MomentosAdapter(private val lista: List<Moment>) :
             holder.binding.textDescripcion.text = momento.descripcion ?: "Sin descripción"
             Glide.with(holder.itemView.context)
                 .load(momento.fotoUrl ?: "")
+                .override(1024,768)
                 .into(holder.binding.imageMomento)
         } catch (e: Exception) {
             e.printStackTrace()

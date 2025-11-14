@@ -37,6 +37,8 @@ class MomentosFragment : Fragment() {
         return binding.root
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -47,6 +49,8 @@ class MomentosFragment : Fragment() {
         binding.recyclerMomentos.adapter = adapter
 
         cargarMomentos()
+
+
 
     }
 
@@ -66,6 +70,23 @@ class MomentosFragment : Fragment() {
                 e.printStackTrace()
             }
     }
+
+   /*     db.collection("momentos")
+            .document(momentos.id)
+            .delete()
+            .addOnCompleteListener { snapshot ->
+                listaMomentos.clear()
+                for (document in snapshot.documents) {
+                    val momento = document.toObject(Moment::class.java)
+                    if (momento != null) listaMomentos.add(momento)
+                }
+                adapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { e ->
+                e.printStackTrace()
+            }
+    }*/
+
 
     override fun onDestroyView() {
         super.onDestroyView()

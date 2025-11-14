@@ -21,6 +21,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Momentum2">
         <activity
+            android:name=".MomentoActivity"
+            android:exported="false"
+            android:label="@string/title_activity_momento"
+            android:theme="@style/Theme.Momentum2" />
+        <activity
             android:name=".MainActivity3"
             android:exported="false"
             android:label="@string/title_activity_main3"

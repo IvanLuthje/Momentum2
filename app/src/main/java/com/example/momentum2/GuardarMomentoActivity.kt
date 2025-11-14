@@ -105,6 +105,12 @@ class GuardarMomentoActivity : AppCompatActivity() {
             return
         }
 
+        val lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        if (lastLocation != null) {
+            latitud = lastLocation.latitude
+            longitud = lastLocation.longitude
+        }
+
         locationManager.requestLocationUpdates(
             LocationManager.GPS_PROVIDER,
             1000L,

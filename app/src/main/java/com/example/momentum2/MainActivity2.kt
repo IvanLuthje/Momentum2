@@ -28,6 +28,8 @@ class MainActivity2 : AppCompatActivity() {
 
     private lateinit var binding: ActivityMain2Binding
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,11 +44,30 @@ class MainActivity2 : AppCompatActivity() {
         val fab: FloatingActionButton = binding.fab
 
         fab.setOnClickListener { view ->
-            cerrarSesion()
+            capturarIntent()
         }
 
 
 
+
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_settings -> {
+                val navController = findNavController(R.id.nav_host_fragment_content_main)
+                navController.navigate(R.id.nav_settings)
+            }
+
+            R.id.logout -> {
+                Firebase.auth.signOut()
+                val intent_login = Intent(this,  LoginActivity::class.java)
+                startActivity(intent_login)
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 
