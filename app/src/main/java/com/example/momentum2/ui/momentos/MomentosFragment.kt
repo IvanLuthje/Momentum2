@@ -22,6 +22,7 @@ class MomentosFragment : Fragment() {
     private lateinit var adapter: MomentosAdapter
     private val listaMomentos = mutableListOf<Moment>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,7 +36,6 @@ class MomentosFragment : Fragment() {
 
         Log.d("MomentosFragment", "Fragment creado")
 
-        // Configurar RecyclerView con el callback de eliminar
         adapter = MomentosAdapter(listaMomentos) { momento, position ->
             mostrarDialogoEliminar(momento, position)
         }
@@ -43,7 +43,6 @@ class MomentosFragment : Fragment() {
         binding.recyclerMomentos.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerMomentos.adapter = adapter
 
-        // Configurar SwipeRefreshLayout
         binding.swipeRefreshLayout.setOnRefreshListener {
             cargarMomentos()
         }
@@ -66,6 +65,7 @@ class MomentosFragment : Fragment() {
                     if (momento != null) listaMomentos.add(momento)
                 }
                 adapter.notifyDataSetChanged()
+                EmptyMoments()
                 binding.swipeRefreshLayout.isRefreshing = false
             }
             .addOnFailureListener { e ->
@@ -100,6 +100,16 @@ class MomentosFragment : Fragment() {
                 e.printStackTrace()
                 Toast.makeText(requireContext(), "Error al eliminar: ${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun EmptyMoments() {
+        if (listaMomentos.isEmpty()) {
+            binding.emptyList.visibility = View.VISIBLE
+            binding.recyclerMomentos.visibility = View.GONE
+        } else {
+            binding.emptyList.visibility = View.GONE
+            binding.recyclerMomentos.visibility = View.VISIBLE
+        }
     }
 
     override fun onDestroyView() {

@@ -7,6 +7,7 @@
     <string name="action_sign_in_en">Sign in or register</string>
     <string name="action_sign_in">Inicia sesión</string>
     <string name="action_register">Registrarse</string>
+    <string name="empty_list">No hay momentos cargados</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="action_sign_in_short_es">Inicia sesión</string>
     <string name="welcome">"Welcome !"</string>
