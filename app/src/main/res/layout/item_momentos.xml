@@ -2,37 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="6dp"
     android:background="?android:selectableItemBackground"
-    android:padding="8dp"
-    android:layout_marginBottom="6dp">
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <ImageButton
+        android:id="@+id/buttonEliminar"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@android:color/transparent"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
 
     <ImageView
         android:id="@+id/imageMomento"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:scaleType="centerCrop"
-        />
+        android:layout_height="299dp"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/textDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="4dp"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:paddingTop="4dp" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textEtiquetas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:paddingTop="2dp"
         android:textColor="#FFF"
-        android:paddingTop="2dp" />
+        android:textSize="14sp" />
 
-    <Button
-        android:id="@+id/view_momento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/view_momento" />
+
 </LinearLayout>

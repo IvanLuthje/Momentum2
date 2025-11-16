@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -37,6 +38,9 @@ android {
         viewBinding = true
         compose = true
     }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 
 dependencies {
@@ -59,6 +63,7 @@ dependencies {
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
     // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:34.4.0"))
     implementation("com.google.firebase:firebase-analytics")
@@ -84,6 +89,7 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.database)
     implementation(libs.play.services.cast.tv)
+    implementation(libs.core.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

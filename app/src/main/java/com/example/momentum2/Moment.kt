@@ -1,7 +1,7 @@
 package com.example.momentum2
 
 data class Moment(
-    val id: String = "",
+    var id: String = "",
     val userId: String = "",
     val fotoUrl: String = "",
     val descripcion: String = "",

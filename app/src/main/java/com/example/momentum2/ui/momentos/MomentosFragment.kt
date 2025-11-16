@@ -1,24 +1,17 @@
 package com.example.momentum2.ui.momentos
 
-import android.app.DownloadManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.momentum2.GuardarMomentoActivity
 import com.example.momentum2.databinding.FragmentMomentosBinding
 import com.example.momentum2.Moment
-
 import com.google.firebase.firestore.FirebaseFirestore
-
+import android.widget.Toast
 
 class MomentosFragment : Fragment() {
 
@@ -37,61 +30,80 @@ class MomentosFragment : Fragment() {
         return binding.root
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         Log.d("MomentosFragment", "Fragment creado")
 
-        adapter = MomentosAdapter(listaMomentos)
+        // Configurar RecyclerView con el callback de eliminar
+        adapter = MomentosAdapter(listaMomentos) { momento, position ->
+            mostrarDialogoEliminar(momento, position)
+        }
+
         binding.recyclerMomentos.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerMomentos.adapter = adapter
 
+        // Configurar SwipeRefreshLayout
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            cargarMomentos()
+        }
+
         cargarMomentos()
-
-
-
     }
 
     private fun cargarMomentos() {
+        binding.swipeRefreshLayout.isRefreshing = true
+
         db.collection("momentos")
             .orderBy("fecha", com.google.firebase.firestore.Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { snapshot ->
                 listaMomentos.clear()
                 for (document in snapshot.documents) {
-                    val momento = document.toObject(Moment::class.java)
+                    val momento = document.toObject(Moment::class.java)?.apply {
+                        id = document.id
+                    }
                     if (momento != null) listaMomentos.add(momento)
                 }
                 adapter.notifyDataSetChanged()
+                binding.swipeRefreshLayout.isRefreshing = false
             }
             .addOnFailureListener { e ->
                 e.printStackTrace()
+                Toast.makeText(requireContext(), "Error al cargar momentos", Toast.LENGTH_SHORT).show()
+                binding.swipeRefreshLayout.isRefreshing = false
             }
     }
 
-   /*     db.collection("momentos")
-            .document(momentos.id)
+    private fun mostrarDialogoEliminar(momento: Moment, position: Int) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Eliminar momento")
+            .setMessage("¿Estás seguro de que deseas eliminar este momento?")
+            .setPositiveButton("Eliminar") { _, _ ->
+                eliminarMomento(momento, position)
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
+    }
+
+    private fun eliminarMomento(momento: Moment, position: Int) {
+
+        db.collection("momentos")
+            .document(momento.id)
             .delete()
-            .addOnCompleteListener { snapshot ->
-                listaMomentos.clear()
-                for (document in snapshot.documents) {
-                    val momento = document.toObject(Moment::class.java)
-                    if (momento != null) listaMomentos.add(momento)
-                }
-                adapter.notifyDataSetChanged()
+            .addOnSuccessListener {
+                listaMomentos.removeAt(position)
+                adapter.notifyItemRemoved(position)
+                Toast.makeText(requireContext(), "Momento eliminado", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
                 e.printStackTrace()
+                Toast.makeText(requireContext(), "Error al eliminar: ${e.message}", Toast.LENGTH_SHORT).show()
             }
-    }*/
-
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
-
-
