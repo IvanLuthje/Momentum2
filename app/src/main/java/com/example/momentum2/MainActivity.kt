@@ -26,6 +26,7 @@ import com.example.momentum2.GuardarMomentoActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import java.io.ByteArrayOutputStream
+
 import java.io.File
 class MainActivity : AppCompatActivity() {
 

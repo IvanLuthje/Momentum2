@@ -18,7 +18,7 @@ class MomentosFragment : Fragment() {
     private var _binding: FragmentMomentosBinding? = null
     private val binding get() = _binding!!
 
-    private val db = FirebaseFirestore.getInstance()
+    private val firestore = FirebaseFirestore.getInstance()
     private lateinit var adapter: MomentosAdapter
     private val listaMomentos = mutableListOf<Moment>()
 
@@ -53,7 +53,7 @@ class MomentosFragment : Fragment() {
     private fun cargarMomentos() {
         binding.swipeRefreshLayout.isRefreshing = true
 
-        db.collection("momentos")
+        firestore.collection("momentos")
             .orderBy("fecha", com.google.firebase.firestore.Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { snapshot ->
@@ -88,7 +88,7 @@ class MomentosFragment : Fragment() {
 
     private fun eliminarMomento(momento: Moment, position: Int) {
 
-        db.collection("momentos")
+        firestore.collection("momentos")
             .document(momento.id)
             .delete()
             .addOnSuccessListener {
