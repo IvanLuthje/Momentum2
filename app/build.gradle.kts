@@ -1,3 +1,8 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
+
+val key: String = gradleLocalProperties(rootDir, providers).getProperty("MAPTILER_API_KEY")
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -5,12 +10,10 @@ plugins {
     alias(libs.plugins.kotlin.android)
 }
 
+
 android {
     namespace = "com.example.momentum2"
-    compileSdk {
-        version = release(36)
-    }
-
+    compileSdk = 36
     defaultConfig {
         applicationId = "com.example.momentum2"
         minSdk = 35
@@ -18,9 +21,9 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "MAPTILER_API_KEY", "\"$key\"")
     }
-
-
 
     buildTypes {
         release {
@@ -31,16 +34,18 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     buildFeatures {
+        buildConfig = true
         viewBinding = true
         compose = true
-        buildConfig = true
-
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
@@ -67,11 +72,8 @@ dependencies {
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
-    // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:34.4.0"))
     implementation("com.google.firebase:firebase-analytics")
-    // Add the dependency for the Firebase Authentication library
-    // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore:25.1.1")
     implementation("com.google.firebase:firebase-storage:21.0.0")
@@ -79,7 +81,6 @@ dependencies {
     implementation("com.cloudinary:cloudinary-android:2.3.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("org.maplibre.gl:android-sdk:11.8.0")
-    // Also add the dependencies for the Credential Manager libraries and specify their versions
     implementation("androidx.credentials:credentials:1.3.0")
     implementation("androidx.credentials:credentials-play-services-auth:1.3.0")
     implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")

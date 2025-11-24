@@ -1,26 +1,21 @@
 package com.example.momentum2
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.momentum2.databinding.ActivityMomentoBinding
-import com.example.momentum2.ui.login.LoginActivity
-import com.google.firebase.Firebase
-import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import org.maplibre.android.BuildConfig
 import org.maplibre.android.MapLibre
+import org.maplibre.android.annotations.MarkerOptions
 import org.maplibre.android.camera.CameraPosition
 import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.maps.MapView
-import com.google.firebase.firestore.FirebaseFirestore
-import org.maplibre.android.BuildConfig
-import org.maplibre.android.annotations.MarkerOptions
-import org.maplibre.android.maps.Style
-import com.example.momentum2.Moment
 
 
 
@@ -52,6 +47,7 @@ class MomentoActivity : AppCompatActivity() {
         val lat = intent.getDoubleExtra("latitud", 0.0)
         val lon = intent.getDoubleExtra("longitud", 0.0)
         val desc = intent.getStringExtra("descripcion")
+        val key = com.example.momentum2.BuildConfig.MAPTILER_API_KEY
 
 
         editDesc.setOnClickListener { view ->
@@ -61,7 +57,7 @@ class MomentoActivity : AppCompatActivity() {
 
         mapView.getMapAsync { map ->
 
-            val styleUrl = "https://api.maptiler.com/maps/streets-v2/style.json?key=YlHNYGKTfem7dvGeeE3c"
+            val styleUrl = "https://api.maptiler.com/maps/streets-v2/style.json?key=$key"
 
             map.setStyle(styleUrl)
             val pos= LatLng(lat, lon) // Example: Los Angeles
@@ -98,6 +94,9 @@ class MomentoActivity : AppCompatActivity() {
 
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return super.onSupportNavigateUp()
+    }
 
 
     private fun editDescripcion() {
