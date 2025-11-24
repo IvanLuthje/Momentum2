@@ -7,23 +7,28 @@
     android:orientation="vertical"
     android:padding="16dp"
     >
-    <ImageView
-        android:id="@+id/imageViewMomento"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:scaleType="centerCrop"
-        android:background="@drawable/roundedcorner"
-        />
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Momentum2.AppBarOverlay"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.Momentum2.PopupOverlay"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <Space android:layout_width="match_parent" android:layout_height="10dp" />
-
+    <Space android:layout_width="match_parent" android:layout_height="200dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
-
+        android:padding="16dp"
+        >
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,16 +36,16 @@
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="4dp"
-            app:contentPadding="16dp">
-
+            app:contentPadding="16dp"
+            >
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/descripcion"
                 app:counterEnabled="true"
                 app:counterMaxLength="140"
-                app:boxBackgroundMode="none">
-
+                app:boxBackgroundMode="none"
+                >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextDescripcion"
                     android:layout_width="match_parent"
@@ -49,12 +54,10 @@
                     android:inputType="textMultiLine|textCapSentences"
                     android:maxLength="140"
                     android:minLines="5"
-                    android:background="@android:color/transparent" />
-
+                    android:background="@android:color/transparent"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
-
         </com.google.android.material.card.MaterialCardView>
-
     </LinearLayout>
 
     <Space android:layout_width="match_parent" android:layout_height="162dp" />
@@ -68,5 +71,4 @@
         android:layout_marginBottom="80dp"
         app:srcCompat="@android:drawable/ic_menu_save"
         />
-
-    </LinearLayout>
+</LinearLayout>

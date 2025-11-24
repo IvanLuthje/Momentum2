@@ -1,45 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/swipeRefreshLayout"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:background="?android:attr/colorBackground">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerMomentos"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:scrollbars="vertical" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerMomentos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:scrollbars="vertical" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-
-
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-<LinearLayout
-android:id="@+id/emptyList"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_gravity="center"
-android:orientation="vertical"
-android:gravity="center"
-android:visibility="gone">
-
-    <TextView
+    <LinearLayout
+        android:id="@+id/emptyList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/empty_list"
-        android:textSize="18sp"
-        android:textColor="#666666"
-        android:layout_marginTop="16dp" />
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp"
+        android:visibility="gone"
+        tools:visibility="visible">
 
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_list_description"
+            android:textSize="14sp"
+            android:textColor="?android:attr/textColorSecondary"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:maxWidth="280dp"
+            android:lineSpacingExtra="4dp" />
+
+
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="gone" />
 
 </FrameLayout>

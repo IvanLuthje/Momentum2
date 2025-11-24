@@ -7,12 +7,14 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.momentum2.R
+import com.example.momentum2.ui.momentos.BuscarFragment
 import com.example.momentum2.ui.momentos.MomentosFragment
 import com.example.momentum2.ui.settings.SettingsFragment
 
 
 private val TAB_TITLES = arrayOf(
-    R.string.tab_text_1
+    R.string.tab_text_1,
+    R.string.tab_text_2
 )
 
 
@@ -22,6 +24,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> MomentosFragment()
+            1 -> BuscarFragment()
             else -> MomentosFragment()
         }
     }
@@ -31,6 +34,6 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     }
 
     override fun getCount(): Int {
-        return 1
+        return 2
     }
 }

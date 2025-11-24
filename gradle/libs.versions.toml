@@ -30,6 +30,7 @@ firebaseFirestore = "26.0.2"
 firebaseDatabase = "22.0.1"
 playServicesCastTv = "21.1.1"
 coreKtxVersion = "1.17.0"
+legacySupportV4 = "1.0.0"
 
 
 [libraries]
@@ -69,6 +70,7 @@ firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 play-services-cast-tv = { group = "com.google.android.gms", name = "play-services-cast-tv", version.ref = "playServicesCastTv" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtxVersion" }
+androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
 
 
 [plugins]

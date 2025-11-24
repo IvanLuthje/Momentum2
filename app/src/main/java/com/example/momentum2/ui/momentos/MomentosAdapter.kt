@@ -27,6 +27,20 @@ class MomentosAdapter(
         return MomentoViewHolder(binding)
     }
 
+
+    private var listaFiltrada: MutableList<Moment> = lista.toMutableList()
+
+    fun filtro(texto: String) {
+        val query = texto.lowercase()
+
+        listaFiltrada = lista.filter { momento ->
+            momento.descripcion.lowercase().contains(query) ||
+                    momento.descripcion.any { it.lowercase().contains(query) }
+        }.toMutableList()
+
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: MomentoViewHolder, position: Int) {
         val momento = lista[position]
 
@@ -38,19 +52,19 @@ class MomentosAdapter(
                 .override(1920, 1080)
                 .into(holder.binding.imageMomento)
 
-            // Botón para ver el momento completo
             holder.binding.imageMomento.setOnClickListener {
                 val context = holder.itemView.context
                 val intent = Intent(context, MomentoActivity::class.java).apply {
-                    putExtra("momento_id", momento.id)
-                    putExtra("momento_descripcion", momento.descripcion)
-                    putExtra("momento_foto_url", momento.fotoUrl)
-                    putExtra("momento_fecha", momento.fecha)
+                    putExtra("id", momento.id)
+                    putExtra("descripcion", momento.descripcion)
+                    putExtra("foto_url", momento.fotoUrl)
+                    putExtra("fecha", momento.fecha)
+                    putExtra("longitud", momento.longitud)
+                    putExtra("latitud", momento.latitud)
                 }
                 context.startActivity(intent)
             }
 
-            // Botón para eliminar el momento
             holder.binding.buttonEliminar.setOnClickListener {
                 onDeleteClick(momento, position)
             }
@@ -66,4 +80,5 @@ class MomentosAdapter(
     }
 
     override fun getItemCount() = lista.size
+
 }

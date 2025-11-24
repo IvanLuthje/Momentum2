@@ -37,7 +37,7 @@ class MomentosFragment : Fragment() {
         Log.d("MomentosFragment", "Fragment creado")
 
         adapter = MomentosAdapter(listaMomentos) { momento, position ->
-            mostrarDialogoEliminar(momento, position)
+            AlertEliminar(momento, position)
         }
 
         binding.recyclerMomentos.layoutManager = LinearLayoutManager(requireContext())
@@ -75,7 +75,7 @@ class MomentosFragment : Fragment() {
             }
     }
 
-    private fun mostrarDialogoEliminar(momento: Moment, position: Int) {
+    private fun AlertEliminar(momento: Moment, position: Int) {
         AlertDialog.Builder(requireContext())
             .setTitle("Eliminar momento")
             .setMessage("¿Estás seguro de que deseas eliminar este momento?")

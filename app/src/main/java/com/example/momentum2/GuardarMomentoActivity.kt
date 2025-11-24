@@ -58,7 +58,7 @@ class GuardarMomentoActivity : AppCompatActivity() {
         }
 
         override fun onProviderDisabled(provider: String) {
-            Toast.makeText(this@GuardarMomentoActivity, "Por favor, active su ubicación.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@GuardarMomentoActivity, "Por favor, activar la ubicación.", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -82,6 +82,8 @@ class GuardarMomentoActivity : AppCompatActivity() {
             binding.imageViewMomento.setImageBitmap(bitmap)
             fotoUri = guardarImagen(bitmap) 
         }
+
+
 
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         obtenerUbicacion()

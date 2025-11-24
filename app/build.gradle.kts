@@ -17,9 +17,10 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
+
 
     buildTypes {
         release {
@@ -37,6 +38,8 @@ android {
     buildFeatures {
         viewBinding = true
         compose = true
+        buildConfig = true
+
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -91,6 +94,7 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.play.services.cast.tv)
     implementation(libs.core.ktx)
+    implementation(libs.androidx.legacy.support.v4)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
