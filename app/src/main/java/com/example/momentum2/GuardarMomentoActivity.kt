@@ -66,12 +66,15 @@ class GuardarMomentoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGuardarMomentoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val key = com.example.momentum2.BuildConfig.CLOUDINARY_API_KEY
+        val secret = com.example.momentum2.BuildConfig.CLOUDINARY_API_SECRET
 
 
-            val config = mapOf(
+
+        val config = mapOf(
                 "cloud_name" to "dbcbevbty",
-                "api_key" to "687437519863617",
-                "api_secret" to "IvNX9eP8pSV22c4LS4ZNn3-vZQM"
+                "api_key" to key,
+                "api_secret" to secret
             )
             MediaManager.init(this, config)
 

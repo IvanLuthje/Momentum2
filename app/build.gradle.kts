@@ -1,7 +1,11 @@
 import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
 
-val key: String = gradleLocalProperties(rootDir, providers).getProperty("MAPTILER_API_KEY")
+val maptilerkey: String = gradleLocalProperties(rootDir, providers).getProperty("MAPTILER_API_KEY")
+val cloudinaryname: String = gradleLocalProperties(rootDir,providers).getProperty("CLOUDINARY_NAME")
+
+val cloudinarykey: String = gradleLocalProperties(rootDir,providers).getProperty("CLOUDINARY_API_KEY")
+val cloudinaryapisecret: String = gradleLocalProperties(rootDir,providers).getProperty("CLOUDINARY_API_SECRET")
 
 plugins {
     alias(libs.plugins.android.application)
@@ -22,7 +26,14 @@ android {
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "MAPTILER_API_KEY", "\"$key\"")
+        buildConfigField("String", "MAPTILER_API_KEY", "\"$maptilerkey\"")
+        buildConfigField("String","CLOUDINARY_NAME", "\"$cloudinaryname\"")
+
+        buildConfigField("String","CLOUDINARY_API_KEY", "\"$cloudinarykey\"")
+        buildConfigField("String","CLOUDINARY_API_SECRET", "\"$cloudinaryapisecret\"")
+
+
+
     }
 
     buildTypes {
