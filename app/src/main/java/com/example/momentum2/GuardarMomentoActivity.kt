@@ -66,13 +66,14 @@ class GuardarMomentoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGuardarMomentoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val name=com.example.momentum2.BuildConfig.CLOUDINARY_NAME
         val key = com.example.momentum2.BuildConfig.CLOUDINARY_API_KEY
         val secret = com.example.momentum2.BuildConfig.CLOUDINARY_API_SECRET
 
 
 
         val config = mapOf(
-                "cloud_name" to "dbcbevbty",
+                "cloud_name" to name,
                 "api_key" to key,
                 "api_secret" to secret
             )
