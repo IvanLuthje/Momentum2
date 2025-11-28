@@ -60,7 +60,6 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp">
 
-                <!-- Card de información -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -93,8 +92,7 @@
                             android:textSize="16sp"
                             android:textColor="#999999"
                             android:lineSpacingMultiplier="1.3"
-                            android:layout_marginBottom="16dp"
-                            tools:text="Esta es una descripción de ejemplo del lugar" />
+                            android:layout_marginBottom="16dp" />
 
                         <View
                             android:layout_width="match_parent"
@@ -117,8 +115,7 @@
                                 android:layout_weight="1"
                                 android:textSize="14sp"
                                 android:textColor="#666666"
-                                android:fontFamily="monospace"
-                                tools:text="-34.7577, -58.3598" />
+                                android:fontFamily="monospace" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -133,8 +130,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:textSize="14sp"
-                                android:textColor="#666666"
-                                tools:text="2024-01-15 14:30:00" />
+                                android:textColor="#666666"/>
                         </LinearLayout>
                     </LinearLayout>
 

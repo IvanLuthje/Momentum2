@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.momentum2.MainActivity
 import com.example.momentum2.MainActivity2
 import com.example.momentum2.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth

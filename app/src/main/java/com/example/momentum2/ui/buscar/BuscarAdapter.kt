@@ -1,3 +1,4 @@
+// BuscarAdapter.kt
 package com.example.momentum2.ui.buscar
 
 import android.content.Intent
@@ -9,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.example.momentum2.Moment
 import com.example.momentum2.MomentoActivity
 import com.example.momentum2.databinding.ItemBuscarBinding
-
 
 class BuscarAdapter(
     private val lista: MutableList<Moment>
@@ -29,12 +29,23 @@ class BuscarAdapter(
         return BuscarViewHolder(binding)
     }
 
-    fun filtro(texto: String) {
-        val query = texto.lowercase()
+    fun updateList(nuevaLista: List<Moment>) {
+        lista.clear()
+        lista.addAll(nuevaLista)
+        listaFiltrada = lista.toMutableList()
+        notifyDataSetChanged()
+    }
 
-        listaFiltrada = lista.filter { momento ->
-            (momento.descripcion ?: "").lowercase().contains(query)
-        }.toMutableList()
+    fun filtro(texto: String) {
+        val query = texto.lowercase().trim()
+
+        listaFiltrada = if (query.isEmpty()) {
+            lista.toMutableList()
+        } else {
+            lista.filter { momento ->
+                (momento.descripcion ?: "").lowercase().contains(query)
+            }.toMutableList()
+        }
 
         notifyDataSetChanged()
     }
@@ -62,7 +73,6 @@ class BuscarAdapter(
                 }
                 context.startActivity(intent)
             }
-
 
         } catch (e: Exception) {
             e.printStackTrace()

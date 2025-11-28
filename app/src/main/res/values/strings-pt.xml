@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Momentum2</string>
+    <string name="title_activity_login">Momentum</string>
+    <string name="set_language">Idioma</string>
+    <string name="set_theme">Tema oscuro</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Entrar ou registrar-se</string>
+    <string name="action_register">Registrar-se</string>
+    <string name="empty_list">Não há momentos carregados</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="welcome">Bem-vindo!</string>
+    <string name="invalid_username">Nome de usuário inválido</string>
+    <string name="invalid_password">A senha deve ter mais de 5 caracteres</string>
+    <string name="login_failed">Falha no login</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Abrir menu de navegação</string>
+    <string name="navigation_drawer_close">Fechar menu de navegação</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Cabeçalho de navegação</string>
+    <string name="action_settings">Configurações</string>
+    <string name="camera_error">Erro na câmera</string>
+    <string name="menu_transform">Momentos</string>
+    <string name="menu_reflow">Detalhes</string>
+    <string name="descripcion">Descrição (máximo 140 caracteres)</string>
+    <string name="menu_slideshow">Apresentação</string>
+    <string name="menu_settings">Configurações</string>
+    <string name="momentos">Momentos</string>
+    <string name="logout">Sair</string>
+    <string name="hello_blank_fragment">Olá fragmento em branco</string>
+    <string name="title_activity_guardar_momento">Salvar Momento</string>
+    <string name="title_activity_contacto">Contato</string>
+    <string name="title_activity_main2">Momentum</string>
+    <string name="tab_text_1">Momentos</string>
+    <string name="tab_text_2">Buscar</string>
+    <string name="view_momento">Ver momento</string>
+    <string name="title_activity_momento">Momento</string>
+    <string name="title_activity_edit_descripcion">Editar Descrição</string>
+    <string name="empty_list_description">Não há momentos carregados</string>
+    <string name="title_activity_settings">Configurações</string>
+
+    <string-array name="languages">
+        <item>Espanhol</item>
+        <item>Inglês</item>
+        <item>Português</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>es</item>
+        <item>en</item>
+        <item>pt</item>
+    </string-array>
+</resources>

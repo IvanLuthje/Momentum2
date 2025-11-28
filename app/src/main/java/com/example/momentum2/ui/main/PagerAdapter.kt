@@ -9,7 +9,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.momentum2.R
 import com.example.momentum2.ui.momentos.BuscarFragment
 import com.example.momentum2.ui.momentos.MomentosFragment
-import com.example.momentum2.ui.settings.SettingsFragment
 
 
 private val TAB_TITLES = arrayOf(

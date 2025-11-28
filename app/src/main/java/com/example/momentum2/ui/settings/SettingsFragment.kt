@@ -1,41 +1,52 @@
 package com.example.momentum2.ui.settings
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.momentum2.databinding.FragmentSettingsBinding
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.ListPreference
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
+import com.example.momentum2.R
+import java.util.Locale
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : PreferenceFragmentCompat() {
 
-    private var _binding: FragmentSettingsBinding? = null
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.preferences, rootKey)
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+        val themeSwitch = findPreference<SwitchPreferenceCompat>("theme_dark")
+        val languageList = findPreference<ListPreference>("language")
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val settingsViewModel =
-            ViewModelProvider(this).get(SettingsViewModel::class.java)
+        themeSwitch?.setOnPreferenceChangeListener { _, newValue ->
+            val enabled = newValue as Boolean
+            AppCompatDelegate.setDefaultNightMode(
+                if (enabled) AppCompatDelegate.MODE_NIGHT_YES
+                else AppCompatDelegate.MODE_NIGHT_NO
+            )
+            true
+        }
 
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-
-        return root
+        languageList?.setOnPreferenceChangeListener { _, newLang ->
+            cambiarIdioma(newLang.toString())
+            activity?.recreate()
+            true
+        }
     }
 
+    private fun cambiarIdioma(lang: String) {
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
 
+        val config = Configuration()
+        config.setLocale(locale)
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        requireActivity().baseContext.resources.updateConfiguration(
+            config,
+            requireActivity().baseContext.resources.displayMetrics
+        )
+
+        val prefs = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        prefs.edit().putString("language", lang).apply()
     }
 }

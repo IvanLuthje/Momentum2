@@ -66,9 +66,9 @@ class GuardarMomentoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGuardarMomentoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val name=com.example.momentum2.BuildConfig.CLOUDINARY_NAME
-        val key = com.example.momentum2.BuildConfig.CLOUDINARY_API_KEY
-        val secret = com.example.momentum2.BuildConfig.CLOUDINARY_API_SECRET
+        val name= BuildConfig.CLOUDINARY_NAME
+        val key = BuildConfig.CLOUDINARY_API_KEY
+        val secret = BuildConfig.CLOUDINARY_API_SECRET
 
 
 
