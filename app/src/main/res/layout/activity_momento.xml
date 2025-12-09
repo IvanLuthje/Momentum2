@@ -78,7 +78,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Descripción"
+                            android:text="@string/descripcion_text"
                             android:textSize="12sp"
                             android:textColor="#999999"
                             android:textAllCaps="true"
@@ -131,6 +131,8 @@
                                 android:layout_weight="1"
                                 android:textSize="14sp"
                                 android:textColor="#666666"/>
+
+
                         </LinearLayout>
                     </LinearLayout>
 
@@ -162,7 +164,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Ubicación"
+                                android:text="@string/location"
                                 android:textSize="14sp"
                                 android:textColor="#212121"
                                 android:textStyle="bold" />

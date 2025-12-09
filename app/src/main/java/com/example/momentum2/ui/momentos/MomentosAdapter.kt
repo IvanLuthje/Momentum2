@@ -73,7 +73,7 @@ class MomentosAdapter(
             e.printStackTrace()
             Toast.makeText(
                 holder.itemView.context,
-                "Error en posición $position: ${e.message}",
+                " $position: ${e.message}",
                 Toast.LENGTH_SHORT
             ).show()
         }

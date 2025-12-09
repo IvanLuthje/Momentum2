@@ -29,14 +29,14 @@
             android:name=".EditDescripcion"
             android:exported="false"
             android:label="@string/title_activity_edit_descripcion"
-            android:theme="@style/Theme.Momentum2.NoActionBar" />
+            android:theme="@style/Theme.Momentum2" />
         <activity
             android:name=".MomentoActivity"
             android:exported="false"
             android:label="@string/title_activity_momento"
             android:theme="@style/Theme.Momentum2.NoActionBar" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.Momentum2.NoActionBar" />

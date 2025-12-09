@@ -138,8 +138,8 @@ class MomentoActivity : AppCompatActivity() {
                 val fecha = doc.getString("fecha")?: ""
 
                 binding.textViewDescripcion.text = descripcion
-                binding.textViewFecha.text = "Fecha: $fecha"
-                binding.textViewCoordenadas.text = "Coordenadas: $lat, $lon"
+                binding.textViewFecha.text = "$fecha"
+                binding.textViewCoordenadas.text = "$lat, $lon"
 
 
 

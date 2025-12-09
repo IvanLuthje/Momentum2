@@ -12,6 +12,7 @@ import com.example.momentum2.databinding.FragmentMomentosBinding
 import com.example.momentum2.Moment
 import com.google.firebase.firestore.FirebaseFirestore
 import android.widget.Toast
+import android.R
 
 class MomentosFragment : Fragment() {
 

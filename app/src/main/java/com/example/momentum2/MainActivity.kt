@@ -1,6 +1,5 @@
 package com.example.momentum2
 
-import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
@@ -11,14 +10,8 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.momentum2.databinding.ActivityMain2Binding
-import com.example.momentum2.databinding.AppBarMainBinding
 import com.example.momentum2.ui.login.LoginActivity
 import com.example.momentum2.ui.main.SectionsPagerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -28,7 +21,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import java.io.ByteArrayOutputStream
 
-class MainActivity2 : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityMain2Binding
@@ -82,8 +75,6 @@ class MainActivity2 : AppCompatActivity() {
     }
 
 
-
-
     private val camaraLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK && result.data != null) {
             val imageBitmap = result.data!!.extras!!.get("data") as Bitmap
@@ -116,6 +107,8 @@ class MainActivity2 : AppCompatActivity() {
         finish()
 
     }
+
+
 
 
 

@@ -17,6 +17,7 @@ class EditDescripcion : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditDescripcionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val momentoId = intent.getStringExtra("id") ?: ""
         val descripcion = intent.getStringExtra("descripcion") ?: ""
@@ -49,6 +50,11 @@ class EditDescripcion : AppCompatActivity() {
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error al actualizar: ${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 
 

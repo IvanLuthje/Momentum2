@@ -2,6 +2,7 @@
     <string name="app_name">Momentum2</string>
     <string name="title_activity_login">Momentum</string>
     <string name="set_language">Idioma</string>
+    <string name="language">Español</string>
     <string name="set_theme">Tema oscuro</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Contraseña</string>
@@ -24,11 +25,16 @@
     <string name="menu_transform">Momentos</string>
     <string name="menu_reflow">Detalles</string>
     <string name="descripcion">Descripción (máximo 140 caracteres)</string>
+    <string name="descripcion_text">Descripción</string>
+    <string name="settings_text">Configuracion</string>
+    <string name="date_text">Fecha:</string>
+    <string name="location">Ubicación</string>
     <string name="menu_slideshow">Presentación</string>
     <string name="menu_settings">Configuraciones</string>
     <string name="momentos">Momentos</string>
     <string name="logout">Cerrar sesión</string>
-    <string name="hello_blank_fragment">Hola fragmento en blanco</string>
+    <string name="save_moment">Momento guardado correctamente</string>
+    <string name="upload_image">Cargando imagen</string>
     <string name="title_activity_guardar_momento">Guardar Momento</string>
     <string name="title_activity_contacto">Contacto</string>
     <string name="title_activity_main2">Momentum</string>

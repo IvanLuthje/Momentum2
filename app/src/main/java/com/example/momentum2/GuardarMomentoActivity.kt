@@ -2,6 +2,7 @@ package com.example.momentum2
 
 import android.Manifest
 import android.R.attr.bitmap
+import android.app.Activity
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -132,8 +133,8 @@ class GuardarMomentoActivity : AppCompatActivity() {
         return try {
             val resolver = contentResolver
             val contentValues = ContentValues().apply {
-                put(MediaStore.Images.Media.DISPLAY_NAME, "momento_${System.currentTimeMillis()}.jpg")
-                put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+                put(MediaStore.Images.Media.DISPLAY_NAME, "momento_${System.currentTimeMillis()}.png")
+                put(MediaStore.Images.Media.MIME_TYPE, "image/png")
                 put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + "/momentos")
                 put(MediaStore.Images.Media.IS_PENDING, 1) 
             }
@@ -146,9 +147,9 @@ class GuardarMomentoActivity : AppCompatActivity() {
             }
 
             resolver.openOutputStream(imageUri)?.use { outputStream ->
-                val ok = bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+                val ok = bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
                 if (!ok) throw Exception("Error al comprimir la imagen")
-            } ?: throw Exception("No se pudo abrir OutputStream para $imageUri")
+            } ?: throw Exception("No se pudo abrir $imageUri")
 
             contentValues.clear()
             contentValues.put(MediaStore.Images.Media.IS_PENDING, 0)
@@ -165,6 +166,7 @@ class GuardarMomentoActivity : AppCompatActivity() {
 
 
     private fun guardarMomento() {
+        val intentMainActivity = Intent()
         val descripcion = binding.editTextDescripcion.text.toString().trim()
         if (descripcion.isEmpty() || fotoUri == null) {
             Toast.makeText(this, "Por favor agregar una descripción", Toast.LENGTH_SHORT).show()
@@ -175,7 +177,7 @@ class GuardarMomentoActivity : AppCompatActivity() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: "anonimo"
         val momentoId = firestore.collection("momentos").document().id
 
-        Toast.makeText(this, "Subiendo imagen", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, R.string.upload_image, Toast.LENGTH_SHORT).show()
 
         MediaManager.get().upload(fotoUri)
             .option("folder", "momentos")
@@ -201,7 +203,8 @@ class GuardarMomentoActivity : AppCompatActivity() {
                         .document(momentoId)
                         .set(momento)
                         .addOnSuccessListener {
-                            Toast.makeText(this@GuardarMomentoActivity, "Momento guardado correctamente", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@GuardarMomentoActivity, R.string.save_moment, Toast.LENGTH_LONG).show()
+                            setResult(Activity.RESULT_OK)
                             finish()
                         }
                         .addOnFailureListener {
