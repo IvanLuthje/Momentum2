@@ -20,11 +20,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Momentum2">
         <activity
+            android:name=".MapActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings"
             android:theme="@style/Theme.Momentum2" />
-
         <activity
             android:name=".EditDescripcion"
             android:exported="false"
@@ -46,7 +48,6 @@
         <activity
             android:name=".ui.login.ui.theme.RegisterActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true"

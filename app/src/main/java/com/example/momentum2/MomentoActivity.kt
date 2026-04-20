@@ -54,6 +54,10 @@ class MomentoActivity : AppCompatActivity() {
             editDescripcion()
         }
 
+        mapView.setOnClickListener {
+            extenderMapa()
+        }
+
 
         mapView.getMapAsync { map ->
 
@@ -109,6 +113,18 @@ class MomentoActivity : AppCompatActivity() {
         }
 
         startActivity(intentDesc)
+    }
+
+    private fun extenderMapa(){
+        val momentoId = intent.getStringExtra("id") ?: return
+        val descripcionActual = binding.textViewDescripcion.text.toString()
+
+        val mapDesc = Intent(this, MapActivity::class.java).apply {
+            putExtra("id", momentoId)
+            putExtra("descripcion", descripcionActual)
+        }
+
+        startActivity(mapDesc)
     }
 
 
