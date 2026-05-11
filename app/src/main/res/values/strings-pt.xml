@@ -24,6 +24,8 @@
     <string name="menu_transform">Momentos</string>
     <string name="menu_reflow">Detalhes</string>
     <string name="descripcion">Descrição (máximo 140 caracteres)</string>
+    <string name="descripcion_text">Descrição</string>
+    <string name="location">Localização</string>
     <string name="menu_slideshow">Apresentação</string>
     <string name="menu_settings">Configurações</string>
     <string name="momentos">Momentos</string>

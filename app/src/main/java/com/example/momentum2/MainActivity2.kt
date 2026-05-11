@@ -1,6 +1,5 @@
 package com.example.momentum2
 
-import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
@@ -11,15 +10,9 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.momentum2.databinding.ActivityMain2Binding
-import com.example.momentum2.databinding.AppBarMainBinding
-import com.example.momentum2.ui.login.LoginActivity
+import com.example.momentum2.ui.login.LoginActivity2
 import com.example.momentum2.ui.main.SectionsPagerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -111,7 +104,7 @@ class MainActivity2 : AppCompatActivity() {
 
     private fun cerrarSesion(){
         Firebase.auth.signOut()
-        val intent_login = Intent(this,  LoginActivity::class.java)
+        val intent_login = Intent(this,  LoginActivity2::class.java)
         startActivity(intent_login)
         finish()
 
