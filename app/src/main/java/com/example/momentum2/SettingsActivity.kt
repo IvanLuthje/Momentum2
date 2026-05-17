@@ -26,3 +26,4 @@ class SettingsActivity : AppCompatActivity() {
         return true
     }
 }
+
