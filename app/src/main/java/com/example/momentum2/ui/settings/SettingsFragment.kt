@@ -135,6 +135,8 @@ class SettingsFragment : Fragment() {
 fun SettingsScreen(onRecreate: () -> Unit) {
     val context = LocalContext.current
     val title_app = stringResource(R.string.title_app)
+    val set_language = stringResource(R.string.set_language)
+    val set_theme = stringResource(R.string.set_theme)
     val prefs   = remember { context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE) }
 
     // Estado del tema (equivalente a SwitchPreferenceCompat "theme_dark")
@@ -262,7 +264,7 @@ fun SettingsScreen(onRecreate: () -> Unit) {
             SettingRow(
                 icon        = if (isDarkMode) Icons.Default.DarkMode else Icons.Default.LightMode,
                 iconTint    = Accent,
-                title       = "Tema oscuro",
+                title       = set_theme,
                 subtitle    = if (isDarkMode) "Modo noche activado" else "Modo claro activado",
                 trailing    = {
                     Switch(
@@ -289,13 +291,13 @@ fun SettingsScreen(onRecreate: () -> Unit) {
             Spacer(Modifier.height(4.dp))
 
             // ── Encabezado de sección: Idioma ─────────────────────────────────
-            SectionHeader(icon = Icons.Default.Language, title = "Idioma")
+            SectionHeader(icon = Icons.Default.Language, title = set_language)
 
             // ── Selector de idioma (ListPreference "language") ────────────────
             SettingRow(
                 icon     = Icons.Default.Translate,
                 iconTint = AccentAlt,
-                title    = "Idioma de la app",
+                title    = set_language,
                 subtitle = idiomas.firstOrNull { it.first == idiomaActual }?.second ?: idiomaActual,
                 trailing = {
                     Icon(
