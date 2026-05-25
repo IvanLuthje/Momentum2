@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">Momentum2</string>
+    <string name="title_activity_login">Momentum</string>
+    <string name="set_language">Langue</string>
+    <string name="set_theme">Thème sombre</string>
+    <string name="prompt_email">E-mail</string>
+    <string name="prompt_password">Mot de passe</string>
+    <string name="action_sign_in">Se connecter ou s\'inscrire</string>
+    <string name="action_register">S\'inscrire</string>
+    <string name="empty_list">Aucun moment chargé</string>
+    <string name="action_sign_in_short">Se connecter</string>
+    <string name="welcome">Bienvenue !</string>
+    <string name="invalid_username">Nom d\'utilisateur invalide</string>
+    <string name="invalid_password">Le mot de passe doit comporter plus de 5 caractères</string>
+    <string name="login_failed">Échec de la connexion</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Ouvrir le menu de navigation</string>
+    <string name="navigation_drawer_close">Fermer le menu de navigation</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">En-tête de navigation</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="camera_error">Erreur de caméra</string>
+    <string name="menu_transform">Moments</string>
+    <string name="menu_reflow">Détails</string>
+    <string name="descripcion">Description (maximum 140 caractères)</string>
+    <string name="descripcion_text">Description</string>
+    <string name="location">Localisation</string>
+    <string name="menu_slideshow">Diaporama</string>
+    <string name="menu_settings">Paramètres</string>
+    <string name="momentos">Moments</string>
+    <string name="logout">Se déconnecter</string>
+    <string name="hello_blank_fragment">Bonjour fragment vide</string>
+    <string name="title_activity_guardar_momento">Enregistrer le moment</string>
+    <string name="title_activity_contacto">Contact</string>
+    <string name="title_activity_main2">Momentum</string>
+    <string name="tab_text_1">Moments</string>
+    <string name="tab_text_2">Recherche</string>
+    <string name="view_momento">Voir le moment</string>
+    <string name="title_activity_momento">Moment</string>
+    <string name="title_activity_edit_descripcion">Modifier la description</string>
+    <string name="empty_list_description">Aucun moment téléchargé</string>
+    <string name="title_activity_settings">Paramètres</string>
+    <string name="alert_desc">Veuillez ajouter une description</string>
+    <string name="title_app">Apparence</string>
+
+    <string-array name="languages">
+        <item>Espagnol</item>
+        <item>Anglais</item>
+        <item>Portugais</item>
+        <item>Français</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>es</item>
+        <item>en</item>
+        <item>pt</item>
+        <item>fr</item>
+    </string-array>
+</resources>

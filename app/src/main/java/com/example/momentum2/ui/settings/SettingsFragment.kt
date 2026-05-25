@@ -78,11 +78,13 @@ import androidx.compose.ui.graphics.*
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import java.util.Locale
+import com.example.momentum2.R
 
 // ─── Colors ───────────────────────────────────────────────────────────────────
 private val BgDeep      = Color(0xFF0D1117)
@@ -132,6 +134,7 @@ class SettingsFragment : Fragment() {
 @Composable
 fun SettingsScreen(onRecreate: () -> Unit) {
     val context = LocalContext.current
+    val title_app = stringResource(R.string.title_app)
     val prefs   = remember { context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE) }
 
     // Estado del tema (equivalente a SwitchPreferenceCompat "theme_dark")
@@ -146,6 +149,8 @@ fun SettingsScreen(onRecreate: () -> Unit) {
         mutableStateOf(prefs.getString("language", "es") ?: "es")
     }
     var showLanguageDialog by remember { mutableStateOf(false) }
+
+
 
     // Orb animado
     val infiniteTransition = rememberInfiniteTransition(label = "orb")
@@ -251,7 +256,7 @@ fun SettingsScreen(onRecreate: () -> Unit) {
             Spacer(Modifier.height(16.dp))
 
             // ── Encabezado de sección: Apariencia ─────────────────────────────
-            SectionHeader(icon = Icons.Default.Palette, title = "Apariencia")
+            SectionHeader(icon = Icons.Default.Palette, title = title_app)
 
             // ── Tema oscuro (SwitchPreferenceCompat "theme_dark") ─────────────
             SettingRow(

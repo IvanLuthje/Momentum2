@@ -80,6 +80,7 @@ import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -144,6 +145,8 @@ fun EditDescripcionScreen(
     var errorMsg   by remember { mutableStateOf<String?>(null) }
     var successMsg by remember { mutableStateOf<String?>(null) }
 
+    val alert = stringResource(id = R.string.alert_desc)
+
     val hayCambios = texto.trim() != descripcionInicial.trim()
     val maxChars   = 500
 
@@ -162,7 +165,7 @@ fun EditDescripcionScreen(
     fun actualizarMomento() {
         val nuevaDescripcion = texto.trim()
         if (nuevaDescripcion.isEmpty()) {
-            errorMsg = "Por favor agregar una descripción"
+            errorMsg = alert
             return
         }
         isLoading = true
@@ -222,7 +225,7 @@ fun EditDescripcionScreen(
                 }
                 Spacer(Modifier.width(4.dp))
                 Text(
-                    text       = "Editar descripción",
+                    text = stringResource(id = R.string.title_activity_edit_descripcion),
                     fontSize   = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color      = TextPrimary,
@@ -256,7 +259,7 @@ fun EditDescripcionScreen(
                         ) {
                             Icon(Icons.Default.Edit, null, tint = Accent, modifier = Modifier.size(16.dp))
                             Text(
-                                "Descripción",
+                                text = stringResource(id = R.string.descripcion),
                                 fontSize      = 12.sp,
                                 color         = TextMuted,
                                 fontWeight    = FontWeight.Medium,
@@ -277,7 +280,8 @@ fun EditDescripcionScreen(
                                 .fillMaxWidth()
                                 .heightIn(min = 160.dp),
                             placeholder = {
-                                Text("Escribí una descripción...", color = TextMuted.copy(alpha = 0.5f))
+
+                                Text(stringResource(id = R.string.descripcion_text), color = TextMuted.copy(alpha = 0.5f))
                             },
                             shape   = RoundedCornerShape(12.dp),
                             colors  = OutlinedTextFieldDefaults.colors(

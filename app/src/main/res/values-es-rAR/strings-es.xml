@@ -40,17 +40,22 @@
     <string name="title_activity_momento">Momento</string>
     <string name="title_activity_edit_descripcion">Editar Descripción</string>
     <string name="empty_list_description">No hay momentos cargados</string>
+    <string name="alert_desc">Por favor, agregar una descripción</string>
     <string name="title_activity_settings">Configuraciones</string>
+    <string name="title_app">Apariencia</string>
+
 
     <string-array name="languages">
         <item>Español</item>
         <item>Inglés</item>
         <item>Portugués</item>
+        <item>Francés</item>
     </string-array>
 
     <string-array name="language_values">
         <item>es</item>
         <item>en</item>
         <item>pt</item>
+        <item>fr</item>
     </string-array>
 </resources>
